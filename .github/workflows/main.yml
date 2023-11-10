@@ -28,6 +28,7 @@ jobs:
         cd `cat /tmp/WLEDtemp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:nodemcuv2' >>platformio.ini
+        echo 'build_flags = ${env:nodemcuv2.build_flags} -D LEDPIN=5 -D WLED_MAX_BUTTONS=4' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build
     - name: Copy Files
